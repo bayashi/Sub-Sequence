@@ -45,7 +45,7 @@ sub seq {
 
 sub _croak {
     require Carp;
-    Carp::croak shift;
+    Carp::croak($_[0]);
 }
 
 1;
