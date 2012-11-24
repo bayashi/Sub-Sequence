@@ -49,7 +49,7 @@ __END__
 
 =head1 NAME
 
-Sub::Sequence - one line description
+Sub::Sequence - simplest, looping over an array in chunks
 
 
 =head1 SYNOPSIS
@@ -70,18 +70,21 @@ Sub::Sequence - one line description
 =head1 DESCRIPTION
 
 Sub::Sequence provides the function named 'seq'.
+You can treat an array with simple interface.
 
 
 =head1 FUNCTIONS
 
 =over 4
 
-=item seq($array_ref, $step_count, \&code)
+=item seq($array_ref, $n, \&code)
 
-This function calls C<\&code> with split array. 
-Return value is the array reference of return value of C<\&code>.
+This function calls C<\&code> with split array.
+And C<\&code> takes $n items at a time(also give $step_count and $offset).
+Return value of C<seq> is the array reference of return values of C<\&code>.
 
     use Sub::Sequence;
+    use Data::Dumper;
 
     my $result = seq [1, 2, 3, 4, 5], 2, sub {
         my ($list, $step, $offset) = @_;
@@ -89,7 +92,7 @@ Return value is the array reference of return value of C<\&code>.
         return $offset;
     };
 
-    warn $result; # [ 0, 2, 4 ]
+    warn Dumper($result); # [ 0, 2, 4 ]
 
 =back
 
@@ -107,7 +110,9 @@ Dai Okabayashi E<lt>bayashi@cpan.orgE<gt>
 
 =head1 SEE ALSO
 
-L<Sub::Retry>
+An interface of this module was inspired by L<Sub::Retry>.
+
+Also check similar modules, L<Iterator::GroupedRange> and C<natatime> method in L<List::MoreUtils>.
 
 
 =head1 LICENSE
