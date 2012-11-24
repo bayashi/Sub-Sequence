@@ -32,10 +32,15 @@ sub seq {
             $loop,
             ($loop - 1) * $every
         );
-        push @result, $ret;
+        if (wantarray && ref($ret) eq 'ARRAY') {
+            push @result, @{$ret};
+        }
+        else {
+            push @result, $ret;
+        }
     }
 
-    return \@result;
+    return wantarray ? @result : \@result;
 }
 
 sub _croak {
@@ -81,7 +86,6 @@ You can treat an array with simple interface.
 
 This function calls C<\&code> with split array.
 And C<\&code> takes $n items at a time(also give $step_count and $offset).
-Return value of C<seq> is the array reference of return values of C<\&code>.
 
     use Sub::Sequence;
     use Data::Dumper;
@@ -93,6 +97,25 @@ Return value of C<seq> is the array reference of return values of C<\&code>.
     };
 
     warn Dumper($result); # [ 0, 2, 4 ]
+
+*NOTE*: Return value of C<seq> is the array reference of return values of C<\&code> in scalar context. However, C<seq> was called in the list context, then return value is the *flatten* list.
+
+    use Sub::Sequence;
+    use Data::Dumper;
+
+    # scalar context
+    my $foo = seq [1, 2, 3, 4, 5], 2, sub {
+        my @list = @{ $_[0] };
+        return \@list;
+    };
+    warn Dumper($foo); # [ [1, 2], [3, 4], [5] ]
+
+    # list context
+    my @bar = seq [1, 2, 3, 4, 5], 2, sub {
+        my @list = @{ $_[0] };
+        return \@list;
+    };
+    warn Dumper(\@bar); # [ 1, 2, 3, 4, 5 ]
 
 =back
 

@@ -74,4 +74,13 @@ can_ok 'Sub::Sequence', qw/seq/;
     is_deeply $result, [0], 'over: third arg';
 }
 
+#--- wantarray result
+{
+    my @result = seq [qw/1 2 3 4 5/], 3, sub {
+        my @list = @{ shift; };
+        \@list;
+    };
+    is_deeply \@result, [ 1, 2, 3, 4, 5 ], 'wantarray';
+}
+
 done_testing;
