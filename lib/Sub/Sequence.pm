@@ -30,7 +30,7 @@ sub seq {
         my $ret = $code->(
             +[ @{$list}[$start .. $end] ],
             $loop,
-            $loop * $every - $every
+            ($loop - 1) * $every
         );
         push @result, $ret;
     }
