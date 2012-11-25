@@ -137,6 +137,8 @@ An interface of this module was inspired by L<Sub::Retry>.
 
 Also check similar modules, L<Iterator::GroupedRange> and C<natatime> method in L<List::MoreUtils>.
 
+Lastly, see C<benchmark.pl> (Sub::Sequence vs splice vs natatime) in C<samples> directory.
+
 
 =head1 LICENSE
 
