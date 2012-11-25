@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use parent qw/Exporter/;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 our @EXPORT = qw/
     seq
