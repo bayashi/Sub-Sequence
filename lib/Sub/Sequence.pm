@@ -98,7 +98,7 @@ And C<\&code> takes $n items at a time(also give $step_count and $offset).
 
     warn Dumper($result); # [ 0, 2, 4 ]
 
-*NOTE*: Return value of C<seq> is the array reference of return values of C<\&code> in scalar context. However, C<seq> was called in the list context, then return value is the *flatten* list.
+B<NOTE>: Return value of C<seq> is the array reference of return values of C<\&code> in scalar context. However, C<seq> was called in the list context, then return value is the B<flatten> list.
 
     use Sub::Sequence;
     use Data::Dumper;
