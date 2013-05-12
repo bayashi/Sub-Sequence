@@ -5,7 +5,7 @@ This is Perl module B<Sub::Sequence>.
 
 =begin html
 
-<a href="http://travis-ci.org/bayashi/Sub-Sequence"><img src="https://secure.travis-ci.org/bayashi/Sub-Sequence.png"/></a>
+<a href="http://travis-ci.org/bayashi/Sub-Sequence"><img src="https://secure.travis-ci.org/bayashi/Sub-Sequence.png"/></a> <a href="https://coveralls.io/r/bayashi/Sub-Sequence"><img src="https://coveralls.io/repos/bayashi/Sub-Sequence/badge.png?branch=master"/></a>
 
 =end html
 
